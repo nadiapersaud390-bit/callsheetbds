@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>CallDesk — Daily Report</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #0f1117;
+    color: #e2e8f0;
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+  }
+
+  /* TOP BAR */
+  .topbar {
+    background: #161b27;
+    border-bottom: 1px solid #1e2a3a;
+    padding: 0 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 62px;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .brand-dot {
+    width: 9px; height: 9px;
+    background: #3b82f6;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(59,130,246,0.7);
+  }
+
+  .brand span {
+    color: #f1f5f9;
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 0.2px;
+  }
+
+  .brand small {
+    color: #475569;
+    font-size: 12px;
+    font-weight: 400;
+    margin-left: 6px;
+  }
+
+  .clock { text-align: right; }
+  #live-clock { color: #f1f5f9; font-size: 17px; font-weight: 700; font-variant-numeric: tabular-nums; }
+  #live-date  { color: #475569; font-size: 11px; margin-top: 2px; }
+
+  /* LAYOUT */
+  .main {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 36px 20px 80px;
+  }
+
+  /* CARDS */
+  .card {
+    background: #161b27;
+    border: 1px solid #1e2a3a;
+    border-radius: 14px;
+    margin-bottom: 18px;
+    overflow: hidden;
+  }
+
+  .card-head {
+    padding: 18px 24px;
+    border-bottom: 1px solid #1e2a3a;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .head-icon {
+    width: 36px; height: 36px;
+    border-radius: 9px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px;
+    flex-shrink: 0;
+  }
+
+  .hi-blue   { background: rgba(59,130,246,0.12); }
+  .hi-teal   { background: rgba(20,184,166,0.12); }
+  .hi-violet { background: rgba(139,92,246,0.12); }
+
+  .card-head h2 { font-size: 14px; font-weight: 600; color: #f1f5f9; }
+  .card-head p  { font-size: 12px; color: #475569; margin-top: 2px; }
+
+  .card-body { padding: 24px; }
+
+  /* FIELDS */
+  .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media(max-width:520px) { .row2 { grid-template-columns: 1fr; } }
+
+  .field { display: flex; flex-direction: column; gap: 7px; }
+
+  label {
+    font-size: 12px;
+    font-weight: 500;
+    color: #94a3b8;
+    letter-spacing: 0.2px;
+  }
+
+  label .req { color: #f87171; margin-left: 2px; }
+
+  input, select, textarea {
+    background: #0f1117;
+    border: 1px solid #1e2a3a;
+    border-radius: 8px;
+    color: #e2e8f0;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    padding: 10px 14px;
+    outline: none;
+    width: 100%;
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+
+  input:focus, select:focus, textarea:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59,130,246,0.12);
+  }
+
+  input::placeholder, textarea::placeholder { color: #334155; }
+  select option { background: #161b27; color: #e2e8f0; }
+  textarea { resize: vertical; min-height: 65px; }
+
+  /* STATS */
+  .stats {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .stat {
+    flex: 1;
+    background: #0f1117;
+    border: 1px solid #1e2a3a;
+    border-radius: 10px;
+    padding: 14px 16px;
+    text-align: center;
+  }
+
+  .stat .n { font-size: 28px; font-weight: 700; color: #3b82f6; display: block; line-height: 1; }
+  .stat .l { font-size: 11px; color: #475569; margin-top: 5px; display: block; text-transform: uppercase; letter-spacing: 0.5px; }
+
+  /* CALL ENTRY CARD */
+  .call-card {
+    background: #0f1117;
+    border: 1px solid #1e2a3a;
+    border-radius: 10px;
+    padding: 18px 20px;
+    margin-bottom: 12px;
+    animation: fadeUp 0.2s ease;
+  }
+
+  @keyframes fadeUp {
+    from { opacity:0; transform:translateY(8px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+
+  .call-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+
+  .call-badge {
+    background: rgba(59,130,246,0.12);
+    color: #60a5fa;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 20px;
+    border: 1px solid rgba(59,130,246,0.2);
+    letter-spacing: 0.3px;
+  }
+
+  .rm-btn {
+    background: none;
+    border: 1px solid #1e2a3a;
+    border-radius: 6px;
+    color: #475569;
+    cursor: pointer;
+    font-size: 12px;
+    font-family: 'Inter', sans-serif;
+    padding: 4px 10px;
+    transition: all 0.15s;
+  }
+
+  .rm-btn:hover {
+    border-color: #7f1d1d;
+    color: #f87171;
+    background: rgba(248,113,113,0.07);
+  }
+
+  /* EMPTY */
+  .empty {
+    text-align: center;
+    padding: 38px 20px;
+    color: #334155;
+    font-size: 13px;
+    border: 1px dashed #1e2a3a;
+    border-radius: 10px;
+  }
+
+  .empty .ei { font-size: 30px; display: block; margin-bottom: 10px; filter: grayscale(1) opacity(0.4); }
+
+  /* ADD BTN */
+  .btn-add {
+    width: 100%;
+    margin-top: 12px;
+    background: transparent;
+    border: 1px dashed #1e3a5f;
+    border-radius: 8px;
+    color: #3b82f6;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 12px;
+    transition: all 0.15s;
+  }
+
+  .btn-add:hover {
+    background: rgba(59,130,246,0.06);
+    border-color: #3b82f6;
+  }
+
+  /* SUBMIT BTN */
+  .btn-submit {
+    width: 100%;
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 15px;
+    transition: all 0.2s;
+    letter-spacing: 0.3px;
+    box-shadow: 0 4px 14px rgba(37,99,235,0.25);
+  }
+
+  .btn-submit:hover:not(:disabled) {
+    background: linear-gradient(135deg, #1d4ed8, #1e40af);
+    box-shadow: 0 6px 20px rgba(37,99,235,0.35);
+    transform: translateY(-1px);
+  }
+
+  .btn-submit:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
+
+  /* STATUS */
+  #status-bar {
+    display: none;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 13px;
+    margin-top: 12px;
+  }
+
+  #status-bar.success { display:flex; background:rgba(20,184,166,0.1); border:1px solid rgba(20,184,166,0.25); color:#2dd4bf; }
+  #status-bar.error   { display:flex; background:rgba(248,113,113,0.08); border:1px solid rgba(248,113,113,0.2); color:#f87171; }
+  #status-bar.loading { display:flex; background:rgba(234,179,8,0.08); border:1px solid rgba(234,179,8,0.2); color:#facc15; }
+
+  .spinner {
+    width: 14px; height: 14px;
+    border: 2px solid rgba(250,204,21,0.25);
+    border-top-color: #facc15;
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+    flex-shrink: 0;
+  }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* DIVIDER */
+  .divider { height: 1px; background: #1e2a3a; margin: 20px 0; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="brand">
+    <div class="brand-dot"></div>
+    <span>CallDesk <small>/ End of Day Report</small></span>
+  </div>
+  <div class="clock">
+    <div id="live-clock">--:--:--</div>
+    <div id="live-date"></div>
+  </div>
+</div>
+
+<div class="main">
+
+  <!-- AGENT INFO -->
+  <div class="card">
+    <div class="card-head">
+      <div class="head-icon hi-blue">👤</div>
+      <div>
+        <h2>Your Information</h2>
+        <p>Enter your details once at the start of your shift</p>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="row2">
+        <div class="field">
+          <label>Full Name <span class="req">*</span></label>
+          <input type="text" id="agent-name" placeholder="Jane Smith"/>
+        </div>
+        <div class="field">
+          <label>Agent ID <span class="req">*</span></label>
+          <input type="text" id="agent-id" placeholder="AGT-001"/>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CALLS -->
+  <div class="card">
+    <div class="card-head">
+      <div class="head-icon hi-teal">📞</div>
+      <div>
+        <h2>Calls Over 1 Minute — Not Converted</h2>
+        <p>Log each call as it happens, submit everything at end of shift</p>
+      </div>
+    </div>
+    <div class="card-body">
+
+      <div class="stats">
+        <div class="stat">
+          <span class="n" id="count-calls">0</span>
+          <span class="l">Calls Logged</span>
+        </div>
+      </div>
+
+      <div id="calls-container">
+        <div class="empty">
+          <span class="ei">📋</span>
+          No calls logged yet — hit "Add Call" to get started.
+        </div>
+      </div>
+
+      <button class="btn-add" onclick="addCall()">＋ Add Call</button>
+    </div>
+  </div>
+
+  <!-- SUBMIT -->
+  <div class="card">
+    <div class="card-head">
+      <div class="head-icon hi-violet">📤</div>
+      <div>
+        <h2>Submit Report</h2>
+        <p>Sends your full list + timestamp to the team sheet</p>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field" style="margin-bottom:18px;">
+        <label>End of Day Notes <span style="color:#475569;font-weight:400;">(optional)</span></label>
+        <textarea id="eod-notes" placeholder="Any patterns, escalations, or general observations from today…"></textarea>
+      </div>
+      <button class="btn-submit" id="submit-btn" onclick="submitReport()">
+        Submit End of Day Report
+      </button>
+      <div id="status-bar">
+        <div class="spinner" id="status-spinner" style="display:none;"></div>
+        <span id="status-msg"></span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxCwJnP5tnxbIlro_i2s6gOwsm-HPiFr_s5Xss56pC5lQHFho0eRsNjSrssYlNCKXfV/exec";
+
+const REASONS = [
+  "Price too high",
+  "Not the decision maker",
+  "Already has a competitor solution",
+  "No budget right now",
+  "Not interested / no need",
+  "Requested callback later",
+  "Wrong number / not the right person",
+  "Language barrier",
+  "Call dropped / disconnected",
+  "Customer was rude / hostile",
+  "Product doesn't fit their needs",
+  "Needs more time to decide",
+  "Other"
+];
+
+// Clock
+function updateClock() {
+  const now = new Date();
+  document.getElementById("live-clock").textContent =
+    now.toLocaleTimeString("en-US", { hour12: true });
+  document.getElementById("live-date").textContent =
+    now.toLocaleDateString("en-US", { weekday:"short", month:"short", day:"numeric", year:"numeric" });
+}
+updateClock();
+setInterval(updateClock, 1000);
+
+// Calls
+let callCount = 0;
+
+function addCall() {
+  callCount++;
+  const id = callCount;
+
+  const container = document.getElementById("calls-container");
+  const empty = container.querySelector(".empty");
+  if (empty) empty.remove();
+
+  const opts = REASONS.map(r => `<option value="${r}">${r}</option>`).join("");
+
+  const card = document.createElement("div");
+  card.className = "call-card";
+  card.id = `call-${id}`;
+  card.innerHTML = `
+    <div class="call-card-top">
+      <span class="call-badge">Call #${id}</span>
+      <button class="rm-btn" onclick="removeCall(${id})">✕ Remove</button>
+    </div>
+    <div class="row2" style="margin-bottom:12px;">
+      <div class="field">
+        <label>Caller Phone / ID</label>
+        <input type="text" id="phone-${id}" placeholder="+1 555 000 1234"/>
+      </div>
+      <div class="field">
+        <label>Reason Not Converted <span class="req">*</span></label>
+        <select id="reason-${id}">
+          <option value="" disabled selected>Select a reason…</option>
+          ${opts}
+        </select>
+      </div>
+    </div>
+    <div class="field">
+      <label>Notes</label>
+      <textarea id="notes-${id}" placeholder="Brief notes on this call…"></textarea>
+    </div>
+  `;
+  container.appendChild(card);
+  updateCount();
+  card.scrollIntoView({ behavior:"smooth", block:"nearest" });
+}
+
+function removeCall(id) {
+  const el = document.getElementById(`call-${id}`);
+  if (!el) return;
+  el.style.opacity = "0";
+  el.style.transition = "opacity 0.18s";
+  setTimeout(() => {
+    el.remove();
+    updateCount();
+    if (!document.querySelector(".call-card")) {
+      document.getElementById("calls-container").innerHTML = `
+        <div class="empty">
+          <span class="ei">📋</span>
+          No calls logged yet — hit "Add Call" to get started.
+        </div>`;
+    }
+  }, 180);
+}
+
+function updateCount() {
+  document.getElementById("count-calls").textContent =
+    document.querySelectorAll(".call-card").length;
+}
+
+function showStatus(type, msg) {
+  const bar = document.getElementById("status-bar");
+  bar.className = type;
+  document.getElementById("status-msg").textContent = msg;
+  document.getElementById("status-spinner").style.display = type === "loading" ? "block" : "none";
+  bar.style.display = "flex";
+}
+
+async function submitReport() {
+  const agentName = document.getElementById("agent-name").value.trim();
+  const agentId   = document.getElementById("agent-id").value.trim();
+  const eodNotes  = document.getElementById("eod-notes").value.trim();
+  const cards     = document.querySelectorAll(".call-card");
+  const now       = new Date();
+
+  if (!agentName || !agentId) {
+    showStatus("error", "Please enter your Name and Agent ID before submitting."); return;
+  }
+  if (cards.length === 0) {
+    showStatus("error", "No calls logged. Add at least one call before submitting."); return;
+  }
+
+  const callRows = [];
+  let allValid = true;
+
+  cards.forEach(c => {
+    const i      = c.id.split("-")[1];
+    const reason = document.getElementById(`reason-${i}`)?.value || "";
+    if (!reason) { allValid = false; return; }
+    callRows.push({
+      callIndex: `#${i}`,
+      phone:     document.getElementById(`phone-${i}`)?.value.trim() || "",
+      reason,
+      notes:     document.getElementById(`notes-${i}`)?.value.trim() || ""
+    });
+  });
+
+  if (!allValid) {
+    showStatus("error", "Please select a reason for every call before submitting."); return;
+  }
+
+  showStatus("loading", "Sending report to Google Sheets…");
+  document.getElementById("submit-btn").disabled = true;
+
+  try {
+    await fetch(GOOGLE_SCRIPT_URL, {
+      method: "POST",
+      mode: "no-cors",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        submittedAt:      now.toISOString(),
+        submittedAtLocal: now.toLocaleString(),
+        agentName,
+        agentId,
+        totalCalls: callRows.length,
+        eodNotes,
+        calls: callRows
+      })
+    });
+    showStatus("success", `✓ Report submitted at ${now.toLocaleTimeString()} — ${callRows.length} call(s) logged. Thanks, ${agentName}!`);
+    document.getElementById("submit-btn").textContent = "✓ Submitted — Submit Again";
+  } catch (err) {
+    showStatus("error", `Submission failed: ${err.message}`);
+  }
+
+  document.getElementById("submit-btn").disabled = false;
+}
+</script>
+</body>
+</html>

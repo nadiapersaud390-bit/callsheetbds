@@ -18,7 +18,7 @@
   .topbar {
     background: #161b27;
     border-bottom: 1px solid #1e2a3a;
-    padding: 0 32px;
+    padding: 0 28px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -26,14 +26,12 @@
   }
 
   .brand { display: flex; align-items: center; gap: 10px; }
-
   .brand-dot {
     width: 9px; height: 9px;
     background: #3b82f6;
     border-radius: 50%;
     box-shadow: 0 0 10px rgba(59,130,246,0.7);
   }
-
   .brand span { color: #f1f5f9; font-weight: 700; font-size: 15px; }
   .brand small { color: #475569; font-size: 12px; font-weight: 400; margin-left: 6px; }
 
@@ -41,18 +39,18 @@
   #live-clock { color: #f1f5f9; font-size: 17px; font-weight: 700; font-variant-numeric: tabular-nums; }
   #live-date  { color: #475569; font-size: 11px; margin-top: 2px; }
 
-  .main { max-width: 780px; margin: 0 auto; padding: 36px 20px 80px; }
+  .main { max-width: 720px; margin: 0 auto; padding: 32px 20px 80px; }
 
   .card {
     background: #161b27;
     border: 1px solid #1e2a3a;
     border-radius: 14px;
-    margin-bottom: 18px;
+    margin-bottom: 16px;
     overflow: hidden;
   }
 
   .card-head {
-    padding: 18px 24px;
+    padding: 16px 22px;
     border-bottom: 1px solid #1e2a3a;
     display: flex;
     align-items: center;
@@ -60,25 +58,24 @@
   }
 
   .head-icon {
-    width: 36px; height: 36px;
+    width: 34px; height: 34px;
     border-radius: 9px;
     display: flex; align-items: center; justify-content: center;
-    font-size: 17px; flex-shrink: 0;
+    font-size: 16px; flex-shrink: 0;
   }
 
   .hi-blue   { background: rgba(59,130,246,0.12); }
   .hi-teal   { background: rgba(20,184,166,0.12); }
-  .hi-violet { background: rgba(139,92,246,0.12); }
 
   .card-head h2 { font-size: 14px; font-weight: 600; color: #f1f5f9; }
   .card-head p  { font-size: 12px; color: #475569; margin-top: 2px; }
 
-  .card-body { padding: 24px; }
+  .card-body { padding: 22px; }
 
-  .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
   @media(max-width:520px) { .row2 { grid-template-columns: 1fr; } }
 
-  .field { display: flex; flex-direction: column; gap: 7px; }
+  .field { display: flex; flex-direction: column; gap: 6px; }
 
   label { font-size: 12px; font-weight: 500; color: #94a3b8; }
   label .req { color: #f87171; margin-left: 2px; }
@@ -105,95 +102,10 @@
   select option { background: #161b27; color: #e2e8f0; }
   textarea { resize: vertical; min-height: 65px; }
 
-  .stats { display: flex; gap: 12px; margin-bottom: 20px; }
-
-  .stat {
-    flex: 1;
-    background: #0f1117;
-    border: 1px solid #1e2a3a;
-    border-radius: 10px;
-    padding: 14px 16px;
-    text-align: center;
-  }
-
-  .stat .n { font-size: 28px; font-weight: 700; color: #3b82f6; display: block; line-height: 1; }
-  .stat .l { font-size: 11px; color: #475569; margin-top: 5px; display: block; text-transform: uppercase; letter-spacing: 0.5px; }
-
-  .call-card {
-    background: #0f1117;
-    border: 1px solid #1e2a3a;
-    border-radius: 10px;
-    padding: 18px 20px;
-    margin-bottom: 12px;
-    animation: fadeUp 0.2s ease;
-  }
-
-  @keyframes fadeUp {
-    from { opacity:0; transform:translateY(8px); }
-    to   { opacity:1; transform:translateY(0); }
-  }
-
-  .call-card-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 16px;
-  }
-
-  .call-badge {
-    background: rgba(59,130,246,0.12);
-    color: #60a5fa;
-    font-size: 11px;
-    font-weight: 600;
-    padding: 4px 12px;
-    border-radius: 20px;
-    border: 1px solid rgba(59,130,246,0.2);
-  }
-
-  .rm-btn {
-    background: none;
-    border: 1px solid #1e2a3a;
-    border-radius: 6px;
-    color: #475569;
-    cursor: pointer;
-    font-size: 12px;
-    font-family: 'Inter', sans-serif;
-    padding: 4px 10px;
-    transition: all 0.15s;
-  }
-
-  .rm-btn:hover { border-color: #7f1d1d; color: #f87171; background: rgba(248,113,113,0.07); }
-
-  .empty {
-    text-align: center;
-    padding: 38px 20px;
-    color: #334155;
-    font-size: 13px;
-    border: 1px dashed #1e2a3a;
-    border-radius: 10px;
-  }
-
-  .empty .ei { font-size: 30px; display: block; margin-bottom: 10px; }
-
-  .btn-add {
+  /* LOG CALL BUTTON */
+  .btn-log {
     width: 100%;
-    margin-top: 12px;
-    background: transparent;
-    border: 1px dashed #1e3a5f;
-    border-radius: 8px;
-    color: #3b82f6;
-    cursor: pointer;
-    font-family: 'Inter', sans-serif;
-    font-size: 13px;
-    font-weight: 500;
-    padding: 12px;
-    transition: all 0.15s;
-  }
-
-  .btn-add:hover { background: rgba(59,130,246,0.06); border-color: #3b82f6; }
-
-  .btn-submit {
-    width: 100%;
+    margin-top: 18px;
     background: linear-gradient(135deg, #2563eb, #1d4ed8);
     border: none;
     border-radius: 10px;
@@ -202,40 +114,156 @@
     font-family: 'Inter', sans-serif;
     font-size: 14px;
     font-weight: 600;
-    padding: 15px;
+    padding: 14px;
     transition: all 0.2s;
     box-shadow: 0 4px 14px rgba(37,99,235,0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
   }
 
-  .btn-submit:hover:not(:disabled) {
+  .btn-log:hover:not(:disabled) {
     background: linear-gradient(135deg, #1d4ed8, #1e40af);
     box-shadow: 0 6px 20px rgba(37,99,235,0.35);
     transform: translateY(-1px);
   }
 
-  .btn-submit:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
+  .btn-log:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
 
-  #status-bar {
-    display: none;
-    align-items: center;
-    gap: 10px;
-    padding: 12px 16px;
-    border-radius: 8px;
-    font-size: 13px;
-    margin-top: 12px;
-  }
-
-  #status-bar.success { display:flex; background:rgba(20,184,166,0.1); border:1px solid rgba(20,184,166,0.25); color:#2dd4bf; }
-  #status-bar.error   { display:flex; background:rgba(248,113,113,0.08); border:1px solid rgba(248,113,113,0.2); color:#f87171; }
-  #status-bar.loading { display:flex; background:rgba(234,179,8,0.08); border:1px solid rgba(234,179,8,0.2); color:#facc15; }
-
-  .spinner {
+  .btn-spinner {
     width: 14px; height: 14px;
-    border: 2px solid rgba(250,204,21,0.25);
-    border-top-color: #facc15;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-top-color: #fff;
     border-radius: 50%;
     animation: spin 0.7s linear infinite;
+    display: none;
+  }
+
+  /* STATUS TOAST */
+  #toast {
+    position: fixed;
+    bottom: 28px;
+    left: 50%;
+    transform: translateX(-50%) translateY(80px);
+    background: #161b27;
+    border: 1px solid #1e2a3a;
+    border-radius: 10px;
+    padding: 13px 22px;
+    font-size: 13px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
+    z-index: 999;
+    white-space: nowrap;
+  }
+
+  #toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+  #toast.success { border-color: rgba(20,184,166,0.4); color: #2dd4bf; }
+  #toast.error   { border-color: rgba(248,113,113,0.4); color: #f87171; }
+
+  /* LOGGED CALLS LIST */
+  .logged-section { margin-top: 6px; }
+
+  .logged-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+  }
+
+  .logged-title {
+    font-size: 12px;
+    font-weight: 600;
+    color: #475569;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .count-badge {
+    background: rgba(59,130,246,0.12);
+    color: #60a5fa;
+    border: 1px solid rgba(59,130,246,0.2);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 20px;
+  }
+
+  .logged-empty {
+    text-align: center;
+    padding: 28px 20px;
+    color: #334155;
+    font-size: 13px;
+    border: 1px dashed #1e2a3a;
+    border-radius: 10px;
+  }
+
+  .logged-item {
+    background: #0f1117;
+    border: 1px solid #1e2a3a;
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    animation: fadeUp 0.2s ease;
+  }
+
+  @keyframes fadeUp {
+    from { opacity:0; transform:translateY(6px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+
+  .logged-num {
+    background: rgba(59,130,246,0.12);
+    color: #60a5fa;
+    border: 1px solid rgba(59,130,246,0.15);
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 9px;
+    white-space: nowrap;
     flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .logged-info { flex: 1; }
+
+  .logged-reason {
+    font-size: 13px;
+    font-weight: 600;
+    color: #e2e8f0;
+    margin-bottom: 4px;
+  }
+
+  .logged-meta {
+    font-size: 11px;
+    color: #475569;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .logged-meta span { display: flex; align-items: center; gap: 4px; }
+
+  .logged-notes {
+    font-size: 12px;
+    color: #64748b;
+    margin-top: 6px;
+    font-style: italic;
+  }
+
+  .logged-check {
+    color: #2dd4bf;
+    font-size: 14px;
+    flex-shrink: 0;
+    margin-top: 2px;
   }
 
   @keyframes spin { to { transform: rotate(360deg); } }
@@ -246,7 +274,7 @@
 <div class="topbar">
   <div class="brand">
     <div class="brand-dot"></div>
-    <span>CallDesk <small>/ End of Day Report</small></span>
+    <span>CallDesk <small>/ Daily Call Log</small></span>
   </div>
   <div class="clock">
     <div id="live-clock">--:--:--</div>
@@ -256,12 +284,13 @@
 
 <div class="main">
 
+  <!-- AGENT INFO -->
   <div class="card">
     <div class="card-head">
       <div class="head-icon hi-blue">👤</div>
       <div>
         <h2>Your Information</h2>
-        <p>Stays saved after each submission</p>
+        <p>Fill in once — stays saved all day</p>
       </div>
     </div>
     <div class="card-body">
@@ -278,76 +307,84 @@
     </div>
   </div>
 
+  <!-- LOG A CALL -->
   <div class="card">
     <div class="card-head">
       <div class="head-icon hi-teal">📞</div>
       <div>
-        <h2>Calls Over 1 Minute — Not Converted</h2>
-        <p>Log each call as it happens, submit at end of shift</p>
+        <h2>Log a Call</h2>
+        <p>Fill in and click "Log Call" — sends instantly to Google Sheets</p>
       </div>
     </div>
     <div class="card-body">
-      <div class="stats">
-        <div class="stat">
-          <span class="n" id="count-calls">0</span>
-          <span class="l">Calls Logged</span>
+      <div class="row2" style="margin-bottom:14px;">
+        <div class="field">
+          <label>Caller Phone / ID</label>
+          <input type="text" id="call-phone" placeholder="+1 555 000 1234"/>
+        </div>
+        <div class="field">
+          <label>Reason Not Converted <span class="req">*</span></label>
+          <select id="call-reason">
+            <option value="" disabled selected>Select a reason…</option>
+            <option>Price too high</option>
+            <option>Not the decision maker</option>
+            <option>Already has a competitor solution</option>
+            <option>No budget right now</option>
+            <option>Not interested / no need</option>
+            <option>Requested callback later</option>
+            <option>Wrong number / not the right person</option>
+            <option>Language barrier</option>
+            <option>Call dropped / disconnected</option>
+            <option>Customer was rude / hostile</option>
+            <option>Product doesn't fit their needs</option>
+            <option>Needs more time to decide</option>
+            <option>Other</option>
+          </select>
         </div>
       </div>
-
-      <div id="calls-container">
-        <div class="empty">
-          <span class="ei">📋</span>
-          No calls logged yet — hit "Add Call" to get started.
-        </div>
+      <div class="field">
+        <label>Notes <span style="color:#475569;font-weight:400;">(optional)</span></label>
+        <textarea id="call-notes" placeholder="Brief notes about this call…"></textarea>
       </div>
 
-      <button class="btn-add" onclick="addCall()">＋ Add Call</button>
+      <button class="btn-log" id="log-btn" onclick="logCall()">
+        <div class="btn-spinner" id="btn-spinner"></div>
+        <span id="btn-text">📋 Log Call</span>
+      </button>
     </div>
   </div>
 
+  <!-- LOGGED CALLS TODAY -->
   <div class="card">
     <div class="card-head">
-      <div class="head-icon hi-violet">📤</div>
+      <div class="head-icon hi-blue">✅</div>
       <div>
-        <h2>Submit Report</h2>
-        <p>Sends your full list + timestamp to Google Sheets</p>
+        <h2>Logged Today</h2>
+        <p>All calls sent to Google Sheets this session</p>
       </div>
     </div>
     <div class="card-body">
-      <div class="field" style="margin-bottom:18px;">
-        <label>End of Day Notes <span style="color:#475569;font-weight:400;">(optional)</span></label>
-        <textarea id="eod-notes" placeholder="Any patterns, escalations, or general observations…"></textarea>
-      </div>
-      <button class="btn-submit" id="submit-btn" onclick="submitReport()">
-        Submit End of Day Report
-      </button>
-      <div id="status-bar">
-        <div class="spinner" id="status-spinner" style="display:none;"></div>
-        <span id="status-msg"></span>
+      <div class="logged-section">
+        <div class="logged-header">
+          <span class="logged-title">Calls this session</span>
+          <span class="count-badge" id="call-count">0 calls</span>
+        </div>
+        <div id="logged-list">
+          <div class="logged-empty">No calls logged yet.</div>
+        </div>
       </div>
     </div>
   </div>
 
 </div>
 
-<script>
-const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxCwJnP5tnxbIlro_i2s6gOwsm-HPiFr_s5Xss56pC5lQHFho0eRsNjSrssYlNCKXfV/exec";
+<!-- TOAST -->
+<div id="toast"></div>
 
-const REASONS = [
-  "Price too high",
-  "Not the decision maker",
-  "Already has a competitor solution",
-  "No budget right now",
-  "Not interested / no need",
-  "Requested callback later",
-  "Wrong number / not the right person",
-  "Language barrier",
-  "Call dropped / disconnected",
-  "Customer was rude / hostile",
-  "Product doesn't fit their needs",
-  "Needs more time to decide",
-  "Other"
-];
+<script>
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxhALVBPiie-v85SN3SDgTw3ml6cznHdThzd_A4Mt6lEG1vP3Z9zeGoBsjlSSMLl2eK/exec";
+
+let loggedCalls = [];
 
 // Clock
 function updateClock() {
@@ -360,165 +397,97 @@ function updateClock() {
 updateClock();
 setInterval(updateClock, 1000);
 
-let callCount = 0;
-
-function addCall() {
-  callCount++;
-  const id = callCount;
-
-  const container = document.getElementById("calls-container");
-  const empty = container.querySelector(".empty");
-  if (empty) empty.remove();
-
-  const opts = REASONS.map(r => `<option value="${r}">${r}</option>`).join("");
-
-  const card = document.createElement("div");
-  card.className = "call-card";
-  card.id = `call-${id}`;
-  card.innerHTML = `
-    <div class="call-card-top">
-      <span class="call-badge">Call #${id}</span>
-      <button class="rm-btn" onclick="removeCall(${id})">✕ Remove</button>
-    </div>
-    <div class="row2" style="margin-bottom:12px;">
-      <div class="field">
-        <label>Caller Phone / ID</label>
-        <input type="text" id="phone-${id}" placeholder="+1 555 000 1234"/>
-      </div>
-      <div class="field">
-        <label>Reason Not Converted <span class="req">*</span></label>
-        <select id="reason-${id}">
-          <option value="" disabled selected>Select a reason…</option>
-          ${opts}
-        </select>
-      </div>
-    </div>
-    <div class="field">
-      <label>Notes</label>
-      <textarea id="notes-${id}" placeholder="Brief notes on this call…"></textarea>
-    </div>
-  `;
-  container.appendChild(card);
-  updateCount();
-  card.scrollIntoView({ behavior:"smooth", block:"nearest" });
+// Toast
+function showToast(type, msg) {
+  const t = document.getElementById("toast");
+  t.textContent = msg;
+  t.className = `show ${type}`;
+  setTimeout(() => { t.className = ""; }, 3500);
 }
 
-function removeCall(id) {
-  const el = document.getElementById(`call-${id}`);
-  if (!el) return;
-  el.style.opacity = "0";
-  el.style.transition = "opacity 0.18s";
-  setTimeout(() => {
-    el.remove();
-    updateCount();
-    if (!document.querySelector(".call-card")) {
-      document.getElementById("calls-container").innerHTML = `
-        <div class="empty">
-          <span class="ei">📋</span>
-          No calls logged yet — hit "Add Call" to get started.
-        </div>`;
-    }
-  }, 180);
-}
-
-function updateCount() {
-  document.getElementById("count-calls").textContent =
-    document.querySelectorAll(".call-card").length;
-}
-
-function showStatus(type, msg) {
-  const bar = document.getElementById("status-bar");
-  bar.className = type;
-  document.getElementById("status-msg").textContent = msg;
-  document.getElementById("status-spinner").style.display = type === "loading" ? "block" : "none";
-  bar.style.display = "flex";
-}
-
-function clearCalls() {
-  // Remove all call cards
-  document.querySelectorAll(".call-card").forEach(c => c.remove());
-  // Reset counter display
-  document.getElementById("count-calls").textContent = "0";
-  // Reset call count
-  callCount = 0;
-  // Clear notes
-  document.getElementById("eod-notes").value = "";
-  // Show empty state
-  document.getElementById("calls-container").innerHTML = `
-    <div class="empty">
-      <span class="ei">📋</span>
-      No calls logged yet — hit "Add Call" to get started.
-    </div>`;
-}
-
-async function submitReport() {
+// Log call
+async function logCall() {
   const agentName = document.getElementById("agent-name").value.trim();
   const agentId   = document.getElementById("agent-id").value.trim();
-  const eodNotes  = document.getElementById("eod-notes").value.trim();
-  const cards     = document.querySelectorAll(".call-card");
+  const phone     = document.getElementById("call-phone").value.trim();
+  const reason    = document.getElementById("call-reason").value;
+  const notes     = document.getElementById("call-notes").value.trim();
   const now       = new Date();
 
   if (!agentName || !agentId) {
-    showStatus("error", "Please enter your Name and Agent ID before submitting."); return;
+    showToast("error", "⚠️ Please enter your Name and Agent ID first."); return;
   }
-  if (cards.length === 0) {
-    showStatus("error", "No calls logged. Add at least one call before submitting."); return;
-  }
-
-  const callRows = [];
-  let allValid = true;
-
-  cards.forEach(c => {
-    const i      = c.id.split("-")[1];
-    const reason = document.getElementById(`reason-${i}`)?.value || "";
-    if (!reason) { allValid = false; return; }
-    callRows.push({
-      callIndex: `#${i}`,
-      phone:     document.getElementById(`phone-${i}`)?.value.trim() || "",
-      reason,
-      notes:     document.getElementById(`notes-${i}`)?.value.trim() || ""
-    });
-  });
-
-  if (!allValid) {
-    showStatus("error", "Please select a reason for every call before submitting."); return;
+  if (!reason) {
+    showToast("error", "⚠️ Please select a reason before logging."); return;
   }
 
-  showStatus("loading", "Sending to Google Sheets…");
-  document.getElementById("submit-btn").disabled = true;
+  // Show loading
+  document.getElementById("log-btn").disabled = true;
+  document.getElementById("btn-spinner").style.display = "block";
+  document.getElementById("btn-text").textContent = "Logging…";
 
-  const payload = {
+  const callData = {
     submittedAt:      now.toISOString(),
     submittedAtLocal: now.toLocaleString(),
     agentName,
     agentId,
-    totalCalls: callRows.length,
-    eodNotes,
-    calls: callRows
+    phone,
+    reason,
+    notes
   };
 
   try {
-    // Use Image trick as fallback for no-cors to confirm delivery
-    const url = GOOGLE_SCRIPT_URL + "?data=" + encodeURIComponent(JSON.stringify(payload));
-
     await fetch(GOOGLE_SCRIPT_URL, {
       method: "POST",
       mode: "no-cors",
       headers: { "Content-Type": "text/plain" },
-      body: JSON.stringify(payload)
+      body: JSON.stringify(callData)
     });
 
-    showStatus("success", `✓ Submitted at ${now.toLocaleTimeString()} — ${callRows.length} call(s) logged. Ready for new entries, ${agentName}!`);
-    document.getElementById("submit-btn").textContent = "Submit End of Day Report";
+    // Add to local logged list
+    loggedCalls.push({ ...callData, time: now.toLocaleTimeString("en-US", { hour12: true }) });
+    renderLogged();
 
-    // Keep name & ID, clear everything else
-    clearCalls();
+    // Clear the form fields (keep name & ID)
+    document.getElementById("call-phone").value = "";
+    document.getElementById("call-reason").value = "";
+    document.getElementById("call-notes").value = "";
+
+    showToast("success", `✓ Call logged at ${now.toLocaleTimeString()}`);
 
   } catch (err) {
-    showStatus("error", `Failed to send: ${err.message}. Check your internet connection.`);
+    showToast("error", `✗ Failed to log: ${err.message}`);
   }
 
-  document.getElementById("submit-btn").disabled = false;
+  document.getElementById("log-btn").disabled = false;
+  document.getElementById("btn-spinner").style.display = "none";
+  document.getElementById("btn-text").textContent = "📋 Log Call";
+}
+
+function renderLogged() {
+  const list = document.getElementById("logged-list");
+  const count = document.getElementById("call-count");
+  count.textContent = `${loggedCalls.length} call${loggedCalls.length !== 1 ? "s" : ""}`;
+
+  if (loggedCalls.length === 0) {
+    list.innerHTML = `<div class="logged-empty">No calls logged yet.</div>`;
+    return;
+  }
+
+  list.innerHTML = loggedCalls.slice().reverse().map((c, i) => `
+    <div class="logged-item">
+      <span class="logged-num">#${loggedCalls.length - i}</span>
+      <div class="logged-info">
+        <div class="logged-reason">${c.reason}</div>
+        <div class="logged-meta">
+          <span>🕐 ${c.time}</span>
+          ${c.phone ? `<span>📱 ${c.phone}</span>` : ""}
+        </div>
+        ${c.notes ? `<div class="logged-notes">${c.notes}</div>` : ""}
+      </div>
+      <span class="logged-check">✓</span>
+    </div>
+  `).join("");
 }
 </script>
 </body>

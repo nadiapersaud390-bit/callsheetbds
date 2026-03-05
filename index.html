@@ -15,7 +15,6 @@
     min-height: 100vh;
   }
 
-  /* TOP BAR */
   .topbar {
     background: #161b27;
     border-bottom: 1px solid #1e2a3a;
@@ -26,11 +25,7 @@
     height: 62px;
   }
 
-  .brand {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
+  .brand { display: flex; align-items: center; gap: 10px; }
 
   .brand-dot {
     width: 9px; height: 9px;
@@ -39,32 +34,15 @@
     box-shadow: 0 0 10px rgba(59,130,246,0.7);
   }
 
-  .brand span {
-    color: #f1f5f9;
-    font-weight: 700;
-    font-size: 15px;
-    letter-spacing: 0.2px;
-  }
-
-  .brand small {
-    color: #475569;
-    font-size: 12px;
-    font-weight: 400;
-    margin-left: 6px;
-  }
+  .brand span { color: #f1f5f9; font-weight: 700; font-size: 15px; }
+  .brand small { color: #475569; font-size: 12px; font-weight: 400; margin-left: 6px; }
 
   .clock { text-align: right; }
   #live-clock { color: #f1f5f9; font-size: 17px; font-weight: 700; font-variant-numeric: tabular-nums; }
   #live-date  { color: #475569; font-size: 11px; margin-top: 2px; }
 
-  /* LAYOUT */
-  .main {
-    max-width: 780px;
-    margin: 0 auto;
-    padding: 36px 20px 80px;
-  }
+  .main { max-width: 780px; margin: 0 auto; padding: 36px 20px 80px; }
 
-  /* CARDS */
   .card {
     background: #161b27;
     border: 1px solid #1e2a3a;
@@ -85,8 +63,7 @@
     width: 36px; height: 36px;
     border-radius: 9px;
     display: flex; align-items: center; justify-content: center;
-    font-size: 17px;
-    flex-shrink: 0;
+    font-size: 17px; flex-shrink: 0;
   }
 
   .hi-blue   { background: rgba(59,130,246,0.12); }
@@ -98,19 +75,12 @@
 
   .card-body { padding: 24px; }
 
-  /* FIELDS */
   .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
   @media(max-width:520px) { .row2 { grid-template-columns: 1fr; } }
 
   .field { display: flex; flex-direction: column; gap: 7px; }
 
-  label {
-    font-size: 12px;
-    font-weight: 500;
-    color: #94a3b8;
-    letter-spacing: 0.2px;
-  }
-
+  label { font-size: 12px; font-weight: 500; color: #94a3b8; }
   label .req { color: #f87171; margin-left: 2px; }
 
   input, select, textarea {
@@ -135,12 +105,7 @@
   select option { background: #161b27; color: #e2e8f0; }
   textarea { resize: vertical; min-height: 65px; }
 
-  /* STATS */
-  .stats {
-    display: flex;
-    gap: 12px;
-    margin-bottom: 20px;
-  }
+  .stats { display: flex; gap: 12px; margin-bottom: 20px; }
 
   .stat {
     flex: 1;
@@ -154,7 +119,6 @@
   .stat .n { font-size: 28px; font-weight: 700; color: #3b82f6; display: block; line-height: 1; }
   .stat .l { font-size: 11px; color: #475569; margin-top: 5px; display: block; text-transform: uppercase; letter-spacing: 0.5px; }
 
-  /* CALL ENTRY CARD */
   .call-card {
     background: #0f1117;
     border: 1px solid #1e2a3a;
@@ -184,7 +148,6 @@
     padding: 4px 12px;
     border-radius: 20px;
     border: 1px solid rgba(59,130,246,0.2);
-    letter-spacing: 0.3px;
   }
 
   .rm-btn {
@@ -199,13 +162,8 @@
     transition: all 0.15s;
   }
 
-  .rm-btn:hover {
-    border-color: #7f1d1d;
-    color: #f87171;
-    background: rgba(248,113,113,0.07);
-  }
+  .rm-btn:hover { border-color: #7f1d1d; color: #f87171; background: rgba(248,113,113,0.07); }
 
-  /* EMPTY */
   .empty {
     text-align: center;
     padding: 38px 20px;
@@ -215,9 +173,8 @@
     border-radius: 10px;
   }
 
-  .empty .ei { font-size: 30px; display: block; margin-bottom: 10px; filter: grayscale(1) opacity(0.4); }
+  .empty .ei { font-size: 30px; display: block; margin-bottom: 10px; }
 
-  /* ADD BTN */
   .btn-add {
     width: 100%;
     margin-top: 12px;
@@ -233,12 +190,8 @@
     transition: all 0.15s;
   }
 
-  .btn-add:hover {
-    background: rgba(59,130,246,0.06);
-    border-color: #3b82f6;
-  }
+  .btn-add:hover { background: rgba(59,130,246,0.06); border-color: #3b82f6; }
 
-  /* SUBMIT BTN */
   .btn-submit {
     width: 100%;
     background: linear-gradient(135deg, #2563eb, #1d4ed8);
@@ -251,7 +204,6 @@
     font-weight: 600;
     padding: 15px;
     transition: all 0.2s;
-    letter-spacing: 0.3px;
     box-shadow: 0 4px 14px rgba(37,99,235,0.25);
   }
 
@@ -263,7 +215,6 @@
 
   .btn-submit:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
 
-  /* STATUS */
   #status-bar {
     display: none;
     align-items: center;
@@ -288,9 +239,6 @@
   }
 
   @keyframes spin { to { transform: rotate(360deg); } }
-
-  /* DIVIDER */
-  .divider { height: 1px; background: #1e2a3a; margin: 20px 0; }
 </style>
 </head>
 <body>
@@ -308,13 +256,12 @@
 
 <div class="main">
 
-  <!-- AGENT INFO -->
   <div class="card">
     <div class="card-head">
       <div class="head-icon hi-blue">👤</div>
       <div>
         <h2>Your Information</h2>
-        <p>Enter your details once at the start of your shift</p>
+        <p>Stays saved after each submission</p>
       </div>
     </div>
     <div class="card-body">
@@ -331,17 +278,15 @@
     </div>
   </div>
 
-  <!-- CALLS -->
   <div class="card">
     <div class="card-head">
       <div class="head-icon hi-teal">📞</div>
       <div>
         <h2>Calls Over 1 Minute — Not Converted</h2>
-        <p>Log each call as it happens, submit everything at end of shift</p>
+        <p>Log each call as it happens, submit at end of shift</p>
       </div>
     </div>
     <div class="card-body">
-
       <div class="stats">
         <div class="stat">
           <span class="n" id="count-calls">0</span>
@@ -360,19 +305,18 @@
     </div>
   </div>
 
-  <!-- SUBMIT -->
   <div class="card">
     <div class="card-head">
       <div class="head-icon hi-violet">📤</div>
       <div>
         <h2>Submit Report</h2>
-        <p>Sends your full list + timestamp to the team sheet</p>
+        <p>Sends your full list + timestamp to Google Sheets</p>
       </div>
     </div>
     <div class="card-body">
       <div class="field" style="margin-bottom:18px;">
         <label>End of Day Notes <span style="color:#475569;font-weight:400;">(optional)</span></label>
-        <textarea id="eod-notes" placeholder="Any patterns, escalations, or general observations from today…"></textarea>
+        <textarea id="eod-notes" placeholder="Any patterns, escalations, or general observations…"></textarea>
       </div>
       <button class="btn-submit" id="submit-btn" onclick="submitReport()">
         Submit End of Day Report
@@ -416,7 +360,6 @@ function updateClock() {
 updateClock();
 setInterval(updateClock, 1000);
 
-// Calls
 let callCount = 0;
 
 function addCall() {
@@ -491,6 +434,23 @@ function showStatus(type, msg) {
   bar.style.display = "flex";
 }
 
+function clearCalls() {
+  // Remove all call cards
+  document.querySelectorAll(".call-card").forEach(c => c.remove());
+  // Reset counter display
+  document.getElementById("count-calls").textContent = "0";
+  // Reset call count
+  callCount = 0;
+  // Clear notes
+  document.getElementById("eod-notes").value = "";
+  // Show empty state
+  document.getElementById("calls-container").innerHTML = `
+    <div class="empty">
+      <span class="ei">📋</span>
+      No calls logged yet — hit "Add Call" to get started.
+    </div>`;
+}
+
 async function submitReport() {
   const agentName = document.getElementById("agent-name").value.trim();
   const agentId   = document.getElementById("agent-id").value.trim();
@@ -524,28 +484,38 @@ async function submitReport() {
     showStatus("error", "Please select a reason for every call before submitting."); return;
   }
 
-  showStatus("loading", "Sending report to Google Sheets…");
+  showStatus("loading", "Sending to Google Sheets…");
   document.getElementById("submit-btn").disabled = true;
 
+  const payload = {
+    submittedAt:      now.toISOString(),
+    submittedAtLocal: now.toLocaleString(),
+    agentName,
+    agentId,
+    totalCalls: callRows.length,
+    eodNotes,
+    calls: callRows
+  };
+
   try {
+    // Use Image trick as fallback for no-cors to confirm delivery
+    const url = GOOGLE_SCRIPT_URL + "?data=" + encodeURIComponent(JSON.stringify(payload));
+
     await fetch(GOOGLE_SCRIPT_URL, {
       method: "POST",
       mode: "no-cors",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        submittedAt:      now.toISOString(),
-        submittedAtLocal: now.toLocaleString(),
-        agentName,
-        agentId,
-        totalCalls: callRows.length,
-        eodNotes,
-        calls: callRows
-      })
+      headers: { "Content-Type": "text/plain" },
+      body: JSON.stringify(payload)
     });
-    showStatus("success", `✓ Report submitted at ${now.toLocaleTimeString()} — ${callRows.length} call(s) logged. Thanks, ${agentName}!`);
-    document.getElementById("submit-btn").textContent = "✓ Submitted — Submit Again";
+
+    showStatus("success", `✓ Submitted at ${now.toLocaleTimeString()} — ${callRows.length} call(s) logged. Ready for new entries, ${agentName}!`);
+    document.getElementById("submit-btn").textContent = "Submit End of Day Report";
+
+    // Keep name & ID, clear everything else
+    clearCalls();
+
   } catch (err) {
-    showStatus("error", `Submission failed: ${err.message}`);
+    showStatus("error", `Failed to send: ${err.message}. Check your internet connection.`);
   }
 
   document.getElementById("submit-btn").disabled = false;

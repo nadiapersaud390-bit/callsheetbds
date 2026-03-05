@@ -390,9 +390,9 @@ let loggedCalls = [];
 function updateClock() {
   const now = new Date();
   document.getElementById("live-clock").textContent =
-    now.toLocaleTimeString("en-US", { hour12: true });
+    now.toLocaleTimeString("en-US", { hour12: true, timeZone: "America/Guyana" });
   document.getElementById("live-date").textContent =
-    now.toLocaleDateString("en-US", { weekday:"short", month:"short", day:"numeric", year:"numeric" });
+    now.toLocaleDateString("en-US", { weekday:"short", month:"short", day:"numeric", year:"numeric", timeZone: "America/Guyana" });
 }
 updateClock();
 setInterval(updateClock, 1000);
@@ -428,7 +428,7 @@ async function logCall() {
 
   const callData = {
     submittedAt:      now.toISOString(),
-    submittedAtLocal: now.toLocaleString(),
+    submittedAtLocal: now.toLocaleString("en-US", { timeZone: "America/Guyana" }),
     agentName,
     agentId,
     phone,
@@ -445,7 +445,7 @@ async function logCall() {
     });
 
     // Add to local logged list
-    loggedCalls.push({ ...callData, time: now.toLocaleTimeString("en-US", { hour12: true }) });
+    loggedCalls.push({ ...callData, time: now.toLocaleTimeString("en-US", { hour12: true, timeZone: "America/Guyana" }) });
     renderLogged();
 
     // Clear the form fields (keep name & ID)
@@ -453,7 +453,7 @@ async function logCall() {
     document.getElementById("call-reason").value = "";
     document.getElementById("call-notes").value = "";
 
-    showToast("success", `✓ Call logged at ${now.toLocaleTimeString()}`);
+    showToast("success", `✓ Call logged at ${now.toLocaleTimeString("en-US", { hour12: true, timeZone: "America/Guyana" })}`);
 
   } catch (err) {
     showToast("error", `✗ Failed to log: ${err.message}`);
